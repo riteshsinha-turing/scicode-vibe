@@ -703,7 +703,7 @@ function EvaluationTab({ problem, setProblem, runState, onRun, running, runLog, 
               disabled={running || selectedModels.length === 0 || selectedSubs.length === 0}>
               {running
                 ? <span style={{ display: "flex", alignItems: "center", gap: 8 }}><Spinner />Running…</span>
-                : "▶  Run Evaluation"}
+                : "▶  Generate Model Outputs"}
             </button>
           </div>
         </div>
@@ -755,7 +755,7 @@ function EvaluationTab({ problem, setProblem, runState, onRun, running, runLog, 
         {modelColumns.length === 0 ? (
           <div style={{ flex: 1, minWidth: 280, display: "flex", alignItems: "center", justifyContent: "center",
             color: C.muted, fontSize: 12, border: `1px dashed ${C.border2}`, borderRadius: 8, padding: 40 }}>
-            No model runs yet — click Run Evaluation above.
+            No model runs yet — click Generate Model Outputs above.
           </div>
         ) : (
           modelColumns.map(m => {
@@ -978,7 +978,7 @@ export default function SciCodeCanvas() {
 
     setRunning(false);
     setTab("evaluation");
-    log("✓ Evaluation complete.");
+    log("✓ Model output generation complete.");
   };
 
   const evalBadge = Object.keys(runState).length;
@@ -1004,7 +1004,7 @@ export default function SciCodeCanvas() {
       <div style={S.tabBar}>
         <button style={S.tab(tab === "editor")} onClick={() => setTab("editor")}>Problem Editor</button>
         <button style={S.tab(tab === "evaluation")} onClick={() => setTab("evaluation")}>
-          Evaluation
+          Model Outputs
           {evalBadge > 0 && (
             <span style={{ ...S.badge(C.blue), padding: "1px 6px", fontSize: 10 }}>
               {evalBadge} model{evalBadge !== 1 ? "s" : ""}
